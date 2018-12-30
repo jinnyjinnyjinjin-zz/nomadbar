@@ -12,5 +12,15 @@ The game contract for making your own unique cocktails.
 * Remix - solidity IDE
 * Pragma solidity 0.5.0
 
+# Libraries
+* Verify Ownership.
+```
+Ownable.sol 
+```
+* Support math operation.
+```
+SafeMath.sol
+```
+
 # Author
 > Jin Chae 
