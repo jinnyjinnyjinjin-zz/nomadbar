@@ -36,16 +36,16 @@ contract NomadBar is Ownable {
 
   //@dev Modifier to check the amount of cocktails the owner's got.
   modifier toastCheck {
-      require(cocktailsCount[msg.sender] > 0,
-    "You don't have any glasses to toast.\
-    Create your own cocktails first.");
+    require(cocktailsCount[msg.sender] > 0,
+      "You don't have any glasses to toast.\
+      Create your own cocktails first.");
     _;
   }
 
   //@dev Function to create a new cocktail. You must have five stars to do.
   function bartend(string calldata _name) external {
     require(cocktailsCount[msg.sender] == 0 || starsCount[msg.sender] >= 5,
-        "You don't have enough stars. Make a toast to get stars.");
+      "You don't have enough stars. Make a toast to get stars.");
     uint newLook = _createRandomDesign(_name);
     _createCocktail(_name, newLook);
   }
@@ -62,15 +62,15 @@ contract NomadBar is Ownable {
     cocktailIdToOwner[cocktailId] = msg.sender;
     cocktailsCount[msg.sender] = cocktailsCount[msg.sender].add(1);
     if(starsCount[msg.sender] >= 5)
-        starsCount[msg.sender] = 0;
+      starsCount[msg.sender] = 0;
     emit NewCocktail(cocktailId, _name);
   }
 
   //@dev Create a random number to make a toast.
   function _createRandomNum(uint _rand) private returns(uint) {
-      randNonce++;
-      uint randNum = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _rand + 1;
-      return randNum;
+    randNonce++;
+    uint randNum = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _rand + 1;
+    return randNum;
   }
 
   //@dev If the player's picked number is same or bigger than random number, the player gets a star.
@@ -86,17 +86,17 @@ contract NomadBar is Ownable {
     uint[] memory allMyCocktails = new uint[](cocktailsCount[msg.sender]);
     uint counter = 0;
     for(uint i = 0; i < cocktails.length; i++) {
-        if(cocktailIdToOwner[i] == msg.sender) {
-          allMyCocktails[counter] = i;
-          counter++;
-        }
+      if(cocktailIdToOwner[i] == msg.sender) {
+        allMyCocktails[counter] = i;
+        counter++;
+      }
     }
     return allMyCocktails;
   }
 
   //@dev Show the amount of stars players' got.
   function checkMyStars() external view onlyOwner() returns(uint) {
-      return starsCount[msg.sender];
+    return starsCount[msg.sender];
   }
 
 }
