@@ -1,3 +1,3 @@
 # Overview
-Personal solidity project
+Personal solidity projects
 
