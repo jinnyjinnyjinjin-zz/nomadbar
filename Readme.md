@@ -8,11 +8,11 @@ The game contract for making your own unique cocktails.
 4. The picked number to bartend must be minimum 1 and maximum 100.<br>
 
 <h1>Development Environment</h1>
-* MacOS Mojave 10.14.2
-* Remix - solidity IDE
-* Pragma solidity 0.5.0
+* MacOS Mojave 10.14.2<br>
+* Remix - solidity IDE<br>
+* Pragma solidity 0.5.0<br>
 
 <h1>Methods</h1>
-<code>
+<pre><code>
 event NewCocktail(uint id, string name);
-</code>
+</code><pre>
