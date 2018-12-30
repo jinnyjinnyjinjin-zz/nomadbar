@@ -12,7 +12,7 @@ The solidity game contract for making your own unique cocktails.
 * Remix - solidity IDE
 * Pragma solidity 0.5.0
 
-# Composition
+# Component
 * Main contract
 ```
 nomadBar.sol
