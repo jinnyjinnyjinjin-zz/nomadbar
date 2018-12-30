@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./safemath.sol";
+import "./SafeMath.sol";
 import "./Ownable.sol";
 
 
@@ -44,16 +44,13 @@ contract NomadBar is Ownable {
 
   //@dev Function to create a new cocktail. You must have five stars to do.
   function bartend(string calldata _name) external {
-    if(cocktailsCount[msg.sender] == 0 || starsCount[msg.sender] >= 5) {
-        uint newLook = _createRandomDesign(_name);
-        _createCocktail(_name, newLook);
-    }else {
-        revert("You don't have enough stars.\
-                Make a toast to get stars.");
-    }
+    require(cocktailsCount[msg.sender] == 0 || starsCount[msg.sender] >= 5,
+        "You don't have enough stars. Make a toast to get stars.");
+    uint newLook = _createRandomDesign(_name);
+    _createCocktail(_name, newLook);
   }
 
-  //@dev Designs the looks which is like shape of a glass, colours, deco for a cocktail at random.
+  //@dev Design the looks which is like shape of a glass, colours, deco for a cocktail at random.
   function _createRandomDesign(string memory _str) private view returns(uint) {
     uint randLooks = uint(keccak256(abi.encodePacked(now, msg.sender, _str)));
     return randLooks % randModule;
@@ -76,18 +73,15 @@ contract NomadBar is Ownable {
       return randNum;
   }
 
-  //@dev Players get stars.
+  //@dev If the player's picked number is same or bigger than random number, the player gets a star.
   function makeToast(uint _pickedNum) external onlyOwner() toastCheck {
-    require(0 < _pickedNum && 100 >= _pickedNum, "your number must be minimum 1 and meximum 100");
+    require(0 < _pickedNum && 100 >= _pickedNum, "Your number must be minimum 1 and maximum 100");
     uint rand = _createRandomNum(100);
-    if (_pickedNum >= rand) {
-        starsCount[msg.sender] = starsCount[msg.sender].add(1);
-    }else {
-        revert("none");
-    }
+    require(_pickedNum >= rand, "none");
+    starsCount[msg.sender] = starsCount[msg.sender].add(1);
   }
 
-  //@dev Check all the cocktails players' got.
+  //@dev Show all the cocktails players' got.
   function getAllCocktails() external view onlyOwner() returns(uint[] memory) {
     uint[] memory allMyCocktails = new uint[](cocktailsCount[msg.sender]);
     uint counter = 0;
@@ -100,7 +94,7 @@ contract NomadBar is Ownable {
     return allMyCocktails;
   }
 
-  //@dev Check the amount of stars players' got.
+  //@dev Show the amount of stars players' got.
   function checkMyStars() external view onlyOwner() returns(uint) {
       return starsCount[msg.sender];
   }
