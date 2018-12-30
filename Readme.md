@@ -1,5 +1,5 @@
 # Overview
-The game contract for making your own unique cocktails.
+The solidity game contract for making your own unique cocktails.
 
 # Requirement Description
 1. Players can bartend to get a random cocktail at the first visit.
@@ -12,14 +12,17 @@ The game contract for making your own unique cocktails.
 * Remix - solidity IDE
 * Pragma solidity 0.5.0
 
-# Libraries
-* Verify Ownership.
+# Composition
+* Main contract
 ```
-Ownable.sol 
+nomadBar.sol
 ```
-* Support math operation.
+* Libraries
 ```
-SafeMath.sol
+Ownable.sol     //Verify Ownership.
+```
+```
+SafeMath.sol    //Support math operation.
 ```
 
 # Author
