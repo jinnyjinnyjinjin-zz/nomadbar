@@ -59,7 +59,7 @@ contract NomadBar is Ownable {
     return randLooks % randModule;
   }
 
- //@dev Creates a cocktail.
+ //@dev Create a cocktail.
   function _createCocktail(string memory _name, uint _look) private {
     uint cocktailId = cocktails.push(Cocktail(_name, _look)) - 1;
     cocktailIdToOwner[cocktailId] = msg.sender;
@@ -69,14 +69,14 @@ contract NomadBar is Ownable {
     emit NewCocktail(cocktailId, _name);
   }
 
-  //@dev Creates a random number to make a toast.
+  //@dev Create a random number to make a toast.
   function _createRandomNum(uint _rand) private returns(uint) {
       randNonce++;
       uint randNum = uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _rand + 1;
       return randNum;
   }
 
-  //@dev You can get stars if your number is bigger then a random number.
+  //@dev Players get stars.
   function makeToast(uint _pickedNum) external onlyOwner() toastCheck {
     require(0 < _pickedNum && 100 >= _pickedNum, "your number must be minimum 1 and meximum 100");
     uint rand = _createRandomNum(100);
@@ -87,7 +87,7 @@ contract NomadBar is Ownable {
     }
   }
 
-  //@dev You can check your all cocktails you've got.
+  //@dev Check all the cocktails players' got.
   function getAllCocktails() external view onlyOwner() returns(uint[] memory) {
     uint[] memory allMyCocktails = new uint[](cocktailsCount[msg.sender]);
     uint counter = 0;
@@ -100,7 +100,7 @@ contract NomadBar is Ownable {
     return allMyCocktails;
   }
 
-  //@dev You can check your stars you've got.
+  //@dev Check the amount of stars players' got.
   function checkMyStars() external view onlyOwner() returns(uint) {
       return starsCount[msg.sender];
   }
