@@ -3,7 +3,6 @@ pragma solidity ^0.5.0;
 import "./SafeMath.sol";
 import "./Ownable.sol";
 
-
 //@title Contract for making random cocktails.
 //@author Jin Chae
 //@dev You can make your own unique cocktails after collecting enough stars by making a toast.
