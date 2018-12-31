@@ -26,4 +26,4 @@ SafeMath.sol    //Support math operation.
 ```
 
 # Author
-> Jin Chae 
+> jinnyjinnyjinjin 
