@@ -1,5 +1,5 @@
 # Overview
-> This is repository for personal solidity projects.
+> This is a personal solidity projects.
 
 # Author
 > Jin
