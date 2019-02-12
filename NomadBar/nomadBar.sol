@@ -98,4 +98,4 @@ contract NomadBar is Ownable {
     return starsCount[msg.sender];
   }
 
-}
+} 
