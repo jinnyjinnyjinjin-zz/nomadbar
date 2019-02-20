@@ -97,5 +97,4 @@ contract NomadBar is Ownable {
   function checkMyStars() external view onlyOwner() returns(uint) {
     return starsCount[msg.sender];
   }
-      
 } 
