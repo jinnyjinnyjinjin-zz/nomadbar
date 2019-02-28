@@ -1,5 +1,5 @@
 # Overview
-> Personal test smart contract storage
+> A personal test smart contract storage
 
 # Author
 > Jin
