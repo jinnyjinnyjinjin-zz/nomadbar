@@ -19,7 +19,8 @@
 * Pytho 3.6.x
 
 # 파일구성
-* python pkg  <br>
+* python pkg  
+
 <img src="https://github.com/jinnyjinnyjinjin/smart-contracts/blob/master/Baseball/img/tree.png"></img>
 
 * Main contract
