@@ -16,7 +16,7 @@
 * MacOS Mojave 10.14.2
 * pyCharm
 * iconservice
-* Pytho 3.6.x
+* Python 3.6.x
 * T-Bears (ICON SCORE Development tool)
 
 # 파일구성
