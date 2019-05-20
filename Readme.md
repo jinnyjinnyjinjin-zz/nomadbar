@@ -1,5 +1,5 @@
 # Overview
-> A personal test smart contract storage
+> Solidity project
 
 # Author
 > Jin
